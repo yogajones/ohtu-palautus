@@ -19,5 +19,22 @@ class TestStatisticsService(unittest.TestCase):
             PlayerReaderStub()
         )
 
-    def test_first(self):
-        self.assertEqual("Hello world", "Hello world")
+
+    def test_search_finds_player(self):
+        find_semenko = self.stats.search("Semenko")
+        self.assertEqual(find_semenko.name, "Semenko")
+
+
+    def test_search_doesnt_find_player(self):
+        find_humpty_dumpty = self.stats.search("Humpty Dumpty")
+        self.assertIsNone(find_humpty_dumpty)
+
+    
+    def test_team_returns_team(self):
+        return_edm = self.stats.team("EDM")
+        self.assertIsNotNone(return_edm)
+
+
+    def test_top_returns_top3(self):
+        top3 = self.stats.top(3)
+        self.assertEqual(len(top3), 3)
