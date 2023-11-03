@@ -32,7 +32,8 @@ class StatisticsService:
         )
 
         result = []
-        i = 0
+        i = 1   # fixed bug where top(n) would return top n+1 players
+                # i.e. top3 contained 4 players
         while i <= how_many:
             result.append(sorted_players[i])
             i += 1
