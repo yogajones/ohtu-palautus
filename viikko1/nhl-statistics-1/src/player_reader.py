@@ -15,10 +15,10 @@ class PlayerReader:
 
             if len(parts) > 3:
                 player = Player(
-                    parts[0].strip(),
-                    parts[1].strip(),
-                    int(parts[3].strip()),
-                    int(parts[4].strip())
+                    parts[0].strip(),       # name
+                    parts[1].strip(),       # team
+                    int(parts[3].strip()),  # goals
+                    int(parts[4].strip())   # assists
                 )
 
                 players.append(player)
