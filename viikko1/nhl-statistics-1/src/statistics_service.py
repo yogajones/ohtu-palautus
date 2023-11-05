@@ -35,9 +35,9 @@ class StatisticsService:
         )
 
         result = []
-        i = 1
-        while i <= how_many:
-            result.append(sorted_players[i])    # BUG: never accesses the top player at idx [0]
+        i = 0
+        while i < how_many:
+            result.append(sorted_players[i])
             i += 1
 
         return result
