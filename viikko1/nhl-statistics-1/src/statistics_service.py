@@ -1,8 +1,11 @@
 from player_reader import PlayerReader
+from enum import Enum
 
 
-def sort_by_points(player):
-    return player.points
+class SortBy(Enum):
+    POINTS = lambda player: player.points
+    GOALS = lambda player: player.goals
+    ASSISTS = lambda player: player.assists
 
 
 class StatisticsService:
@@ -24,18 +27,17 @@ class StatisticsService:
 
         return list(players_of_team)
 
-    def top(self, how_many):
+    def top(self, how_many, sort_key=SortBy.POINTS):
         sorted_players = sorted(
             self._players,
             reverse=True,
-            key=sort_by_points
+            key=sort_key
         )
 
         result = []
-        i = 1   # fixed bug where top(n) would return top n+1 players
-                # i.e. top3 contained 4 players
+        i = 1
         while i <= how_many:
-            result.append(sorted_players[i])
+            result.append(sorted_players[i])    # BUG: never accesses the top player at idx [0]
             i += 1
 
         return result
