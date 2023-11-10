@@ -10,3 +10,6 @@
 
 # coverage reports
 /htmlcov
+
+# VS Code workspace
+*.code-workspace
