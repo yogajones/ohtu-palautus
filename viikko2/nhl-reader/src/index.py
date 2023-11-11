@@ -1,26 +1,24 @@
-import requests
-from player import Player
+from player_reader import PlayerReader
+from player_stats import PlayerStats
+
 
 def main():
-    # tallenna raakadata
+    """Tulostaa suomalaiset NHL-pelaajat pistejärjestyksessä."""
+
+    # luo pelaajalistan
     url = "https://studies.cs.helsinki.fi/nhlstats/2022-23/players"
-    response = requests.get(url).json()
+    reader = PlayerReader(url)
+    stats = PlayerStats(reader)
 
-    # luo lista kaikista pelaajista
-    all_players = []
+    # rajaa pelaajat suomalaisiin ja järjestää pisteiden mukaan
+    filter_nationality = "FIN"
+    players = stats.top_scorers_by_nationality(filter_nationality)
 
-    for player_dict in response:
-        player= Player(player_dict)
-        all_players.append(player)
-
-    # tulosta suomalaiset pelaajat
-    FILTER_NATIONALITY = "FIN"
-    
-    print(f"Players from {FILTER_NATIONALITY}:")
-    players_filtered = filter(lambda player: player.nationality == FILTER_NATIONALITY, all_players)
-    players_sorted_by_points = sorted(players_filtered, key=lambda player: player.points, reverse=True)
-    for player in players_sorted_by_points:
+    # tulostaa rajatun ja järjestetyn pelaajalistan muotoiltuna
+    print(f"\nPlayers from {filter_nationality}:\n")
+    for player in players:
         print(player)
+
 
 if __name__ == "__main__":
     main()
