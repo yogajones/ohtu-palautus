@@ -1,9 +1,9 @@
 from tekoaly_parannettu import TekoalyParannettu
-from kps import KPS
+from kps_template import KPS
 
 
 class KPSParempiTekoaly(KPS):
-    def __init__(self, muistin_koko) -> None:
+    def __init__(self, muistin_koko=10) -> None:
         super().__init__()
         self._tekoaly = TekoalyParannettu(muistin_koko)
 

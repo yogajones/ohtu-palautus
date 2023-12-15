@@ -1,4 +1,4 @@
-from kps import KPS
+from kps_template import KPS
 
 
 class KPSPelaajaVsPelaaja(KPS):

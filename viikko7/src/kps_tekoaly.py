@@ -1,5 +1,5 @@
 from tekoaly import Tekoaly
-from kps import KPS
+from kps_template import KPS
 
 
 class KPSTekoaly(KPS):
