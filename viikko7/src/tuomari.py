@@ -6,7 +6,7 @@ class Tuomari:
         self.tokan_pisteet = 0
         self.tasapelit = 0
 
-    def kirjaa_siirto(self, ekan_siirto, tokan_siirto):
+    def kirjaa_siirrot(self, ekan_siirto, tokan_siirto):
         if self._tasapeli(ekan_siirto, tokan_siirto):
             self.tasapelit = self.tasapelit + 1
         elif self._eka_voittaa(ekan_siirto, tokan_siirto):
